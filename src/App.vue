@@ -13,7 +13,6 @@ export default defineComponent({
     Thumbellama
   },
   setup(props, { emit }) {
-    const editor: any = ref(null);
 
     const cookieConsentKey = "cookie-consent";
     const cookieConsentBanner = ref(true);
@@ -29,7 +28,6 @@ export default defineComponent({
 
 
     return {
-      editor,
       cookieConsentBanner,
       acceptCookie,
       parseMarkdown,
@@ -51,7 +49,7 @@ export default defineComponent({
     <br />
     <v-row justify="center">
       <v-col cols="12" sm="10">
-        <Thumbellama  ref="editor"></Thumbellama>
+        <Thumbellama></Thumbellama>
       </v-col>
     </v-row>
   </v-container>

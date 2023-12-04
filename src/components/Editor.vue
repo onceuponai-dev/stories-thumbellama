@@ -4,6 +4,8 @@ import { defineComponent, ref, onMounted, onUpdated } from 'vue';
 import Assistant from '@/llmcommon';
 import { parseMarkdown, highlight } from '@/mdcommon';
 import { getCookie, parseBool, setCookie } from '@/common';
+
+// @ts-ignore
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 // @ts-ignore
 import * as python from 'monaco-editor/esm/vs/basic-languages/python/python'

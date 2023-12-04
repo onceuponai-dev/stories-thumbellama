@@ -7,12 +7,7 @@ import { parseMarkdown, highlight } from '@/mdcommon';
 
 export default defineComponent({
   name: 'Editor',
-
-  props: {
-  },
-  watch: {
-  },
-  setup(props, { emit }) {
+  setup() {
 
     const editor: any = ref(null);
     const code: any = ref(null);
