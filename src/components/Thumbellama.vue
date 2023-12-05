@@ -24,7 +24,7 @@ export default defineComponent({
     const assistantEnabled = ref(false);
     const assistant = new Assistant()
     const assistantConversation: any = ref([]);
-    const assistantModel: any = ref("TinyLlama-1.1B-Chat-v0.5-q4f32_0");
+    const assistantModel: any = ref("TinyLlama-1.1B-Chat-v0.6-q4f32_0");
 
     const assistantChange = async () => {
       await assistant.reload(assistantModel.value);
