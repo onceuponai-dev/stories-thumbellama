@@ -83,12 +83,6 @@ export default defineComponent({
 
 <template>
   <v-card>
-
-    <v-row justify="center">
-    </v-row>
-  </v-card>
-
-  <v-card>
     <v-container>
       <v-row justify="center">
         <v-col cols="1" sm="1"></v-col>
@@ -110,27 +104,6 @@ export default defineComponent({
       <br />
       <v-divider></v-divider>
       <br />
-      <v-row justify="center">
-        <br />
-        <v-col cols="1" sm="1" align="end">
-          <br/>
-          <v-btn variant="text" color="green" v-show="assistantEnabled" @click="explainCode()"
-            :icon="'mdi-lightbulb-on-outline'" size="small"></v-btn>
-        </v-col>
-
-        <v-col cols="5" sm="5">
-          <br/>
-          <v-textarea ref="editor"
-            v-model="code" />
-        </v-col>
-
-        <v-col cols="1" sm="1"></v-col>
-        <v-col cols="5" sm="5">
-          <img src="/images/thumbellama3.png" width="230" />
-        </v-col>
-
-        <br />
-      </v-row>
       <v-row justify="center" v-if="assistantEnabled" v-for="conversationItem in assistantConversation">
         <v-col cols="1" sm="1" align="end">
           <v-btn variant="text" v-show="assistantEnabled" :icon="'mdi-account'" size="small"></v-btn>
@@ -148,8 +121,19 @@ export default defineComponent({
         </v-col>
         <v-col cols="1" sm="1" align="end"></v-col>
       </v-row>
+      <v-row align="center" no-gutters>
+        <br />
+
+        <v-col cols="1" sm="1" align="end" />
+        <v-col cols="10" sm="10">
+          <br />
+          <v-text-field ref="editor" v-model="code" color="green" v-show="assistantEnabled" density="compact" variant="solo"
+            append-inner-icon="mdi-send" single-line hide-details @click:append-inner="explainCode()"></v-text-field>
+        </v-col>
 
 
+        <br />
+      </v-row>
 
 
     </v-container>
