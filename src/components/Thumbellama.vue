@@ -128,7 +128,8 @@ export default defineComponent({
         <v-col cols="10" sm="10">
           <br />
           <v-text-field ref="editor" v-model="code" color="green" v-show="assistantEnabled" density="compact" variant="solo"
-            append-inner-icon="mdi-send" single-line hide-details @click:append-inner="explainCode()"></v-text-field>
+            append-inner-icon="mdi-send" single-line hide-details @click:append-inner="explainCode()"
+            v-on:keydown.enter.capture.prevent.stop="explainCode()"></v-text-field>
         </v-col>
 
 
