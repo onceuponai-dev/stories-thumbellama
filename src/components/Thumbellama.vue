@@ -85,7 +85,6 @@ export default defineComponent({
   <v-card>
     <v-container>
       <v-row justify="center">
-        <v-col cols="1" sm="1"></v-col>
         <v-col cols="7" sm="7">
           <v-select label="Assistant Model" v-model="assistantModel" :items="assistant.modelList()" variant="outlined">
           </v-select>
