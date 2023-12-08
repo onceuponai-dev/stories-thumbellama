@@ -64,9 +64,9 @@ export default defineComponent({
     </v-row><br />
     <v-row justify="center" no-gutters>
 
-      <v-btn class="mx-2" rounded="xl" href="/">HOME</v-btn>
-      <v-btn class="mx-2" rounded="xl" href="/cheatsheets/index.html">CHEATSHEETS</v-btn>
-      <v-btn class="mx-2" rounded="xl" href="/#/terms">TERMS</v-btn>
+      <v-btn class="mx-2" rounded="xl" href="https://www.onceuponai.dev">HOME</v-btn>
+      <v-btn class="mx-2" rounded="xl" href="https://www.onceuponai.dev/cheatsheets/index.html">CHEATSHEETS</v-btn>
+      <v-btn class="mx-2" rounded="xl" href="https://www.onceuponai.dev/#/terms">TERMS</v-btn>
       <v-col class="text-center mt-4" cols="12">
         <strong>© {{ new Date().getFullYear() }} <strong></strong>onceuponai.dev</strong>
       </v-col>
