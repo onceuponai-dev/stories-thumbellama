@@ -1,5 +1,4 @@
 FROM alpine/git:2.36.2 as download
-
 RUN git clone https://github.com/mlc-ai/mlc-llm.git --recursive /mlc-llm
 
 FROM nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
@@ -8,7 +7,6 @@ RUN apt update && \
     apt install -yq curl git cmake ack tmux \
         python3-dev vim python3-venv python3-pip \
         protobuf-compiler build-essential
-
 
 RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
@@ -36,7 +34,6 @@ RUN cd /opt/mlc-llm/3rdparty/tvm \
   && git submodule update --recursive \
   && make webclean \
   && make web
-
 
 RUN python3 -m pip install auto_gptq>=0.2.0 transformers
 
