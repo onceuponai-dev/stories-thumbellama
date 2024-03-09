@@ -41,7 +41,7 @@ RUN apt-get install git-lfs -yq
 
 ENV TVM_HOME="/opt/venv/lib/python3.10/site-packages/tvm/"
 
-RUN git clone https://github.com/emscripten-core/emsdk.git /opt/emsdk
+RUN git clone https://github.com/emscripten-core/emsdk.git --branch 3.1.50 --single-branch /opt/emsdk
 RUN cd /opt/emsdk && ./emsdk install latest
 
 ENV PATH="/opt/emsdk:/opt/emsdk/upstream/emscripten:/opt/emsdk/node/16.20.0_64bit/bin:/opt/venv/bin:$PATH"
@@ -109,3 +109,5 @@ In our case we will use **webgpu** target and **q4f32_0** quantization to obtain
 I have shared several converted models on [HuggingFace](https://huggingface.co/onceuponai-dev) and 
 [Github](https://github.com/onceuponai-dev/stories-thumbellama/tree/main/public/binary-mlc-llm-libs).
 
+Read more on:
+[https://blog.qooba.net/2023/12/13/tinyllama-compact-llm-with-webassembly/](https://blog.qooba.net/2023/12/13/tinyllama-compact-llm-with-webassembly/)
