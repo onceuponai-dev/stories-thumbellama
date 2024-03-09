@@ -21,7 +21,7 @@ RUN apt-get install git-lfs -yq
 
 ENV TVM_HOME="/opt/venv/lib/python3.10/site-packages/tvm/"
 
-RUN git clone https://github.com/emscripten-core/emsdk.git /opt/emsdk
+RUN git clone https://github.com/emscripten-core/emsdk.git --branch 3.1.50 --single-branch /opt/emsdk
 RUN cd /opt/emsdk && ./emsdk install latest
 
 ENV PATH="/opt/emsdk:/opt/emsdk/upstream/emscripten:/opt/emsdk/node/16.20.0_64bit/bin:/opt/venv/bin:$PATH"
