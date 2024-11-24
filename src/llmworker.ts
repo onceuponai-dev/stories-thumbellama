@@ -1,7 +1,6 @@
-import { ChatWorkerHandler, ChatModule } from "@mlc-ai/web-llm";
+import { WebWorkerMLCEngineHandler } from "@mlc-ai/web-llm";
 
-const chat = new ChatModule();
-const handler = new ChatWorkerHandler(chat);
+const handler = new WebWorkerMLCEngineHandler();
 self.onmessage = (msg: MessageEvent) => {
   handler.onmessage(msg);
 };

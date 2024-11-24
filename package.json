@@ -11,7 +11,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@mlc-ai/web-llm": "^0.2.8",
+    "@mlc-ai/web-llm": "^0.2.76",
     "@types/highlight.js": "^10.1.0",
     "@types/marked": "^5.0.1",
     "axios": "^1.6.0",

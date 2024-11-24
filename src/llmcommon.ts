@@ -1,23 +1,67 @@
 // @ts-ignore
 import appConfig from "@/app-config";
-import { ChatModule, type AppConfig, type InitProgressReport, type ModelRecord, ChatWorkerClient } from '@mlc-ai/web-llm';
+import { Chat, CreateMLCEngine, CreateWebWorkerMLCEngine, WebWorkerMLCEngine, type AppConfig, type InitProgressReport } from "@mlc-ai/web-llm";
 import { parseMarkdown, highlight } from '@/mdcommon';
 import { VCardItem } from "vuetify/components";
 
 export default class Assistant {
     llmConfig!: AppConfig;
-    chat!: ChatWorkerClient;
+    chat!: Chat;
+    engine!: WebWorkerMLCEngine
 
-    public constructor() {
+    public async init() {
+        const selectedModel = "Bielik-11B-v2.3-Instruct-q4f32_1";
         this.llmConfig = appConfig;
-        this.chat = new ChatWorkerClient(new Worker(
-            new URL('@/llmworker.ts', import.meta.url),
-            { type: 'module' }
-        ));
 
-        this.chat.setInitProgressCallback((report: InitProgressReport) => {
-            Assistant.setLabel("init-label", report.text);
+        // Callback function to update model loading progress
+        const initProgressCallback = (initProgress: InitProgressReport) => {
+            console.log(initProgress);
+        }
+
+        const engine = await CreateMLCEngine(
+            selectedModel,
+            { initProgressCallback: initProgressCallback, appConfig }, // engineConfig
+        );
+
+        const messages: any = [
+            { role: "system", content: "You are a helpful AI assistant." },
+            { role: "user", content: "Hello!" },
+        ]
+
+        const reply = await engine.chat.completions.create({
+            messages,
         });
+        console.log(reply.choices[0].message);
+        console.log(reply.usage);
+
+        /*
+        console.log(this.llmConfig)
+        const initProgressCallback = (report: InitProgressReport) => {
+            console.log(report);
+            //Assistant.setLabel("init-label", report.text);
+        }
+
+        const engine = await CreateWebWorkerMLCEngine(
+            new Worker(
+            new URL("@/llmworker.ts", import.meta.url), 
+            {
+                type: "module",
+            }
+            ),
+            selectedModel,
+            { appConfig: this.llmConfig, initProgressCallback },
+        );
+
+        this.engine = engine;
+        this.chat = engine.chat;
+        */
+
+
+        // this.chat = new ChatWorkerClient(new Worker(
+        //     new URL('@/llmworker.ts', import.meta.url),
+        //     { type: 'module' }
+        // ));
+
     }
 
     public static setLabel(id: string, text: string) {
@@ -39,16 +83,22 @@ export default class Assistant {
     public async reload(model: string) {
         //const model = "RedPajama-INCITE-Chat-3B-v1-q4f32_0";
         //const model = "TinyLlama-1.1B-Chat-v0.3-q4f32_0";
-        await this.chat.reload(model, undefined, this.llmConfig);
+        await this.engine.reload(model);
     }
 
     public async prompt(prompt: string, itemId: string) {
-        const reply = await this.chat.generate(prompt, Assistant.generateProgressCallback(itemId));
-        return reply
+        const messages: any = [
+            { role: "system", content: "You are a helpful AI assistant." },
+            { role: "user", content: "Hello!" },
+        ]
+        const reply = await this.engine.chat.completions.create({
+            messages,
+        });
+        return reply.choices[0].message
     }
 
     public async explain(code: string, itemId: string) {
-      const prompt = `${code}`;
-      return await this.prompt(prompt, itemId);
+        const prompt = `${code}`;
+        return await this.prompt(prompt, itemId);
     }
 }

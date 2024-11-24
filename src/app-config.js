@@ -1,47 +1,10 @@
 export default {
 	"model_list": [
 		{
-			"model_url": "https://huggingface.co/onceuponai-dev/mlc-chat-TinyLlama-1.1B-Chat-v0.1-q4f32_0/resolve/main/",
-			"local_id": "TinyLlama-1.1B-Chat-v0.1-q4f32_0"
-		},
-		{
-			"model_url": "https://huggingface.co/onceuponai-dev/mlc-chat-TinyLlama-1.1B-Chat-v0.2-q4f32_0/resolve/main/",
-			"local_id": "TinyLlama-1.1B-Chat-v0.2-q4f32_0"
-		},
-		{
-			"model_url": "https://huggingface.co/onceuponai-dev/mlc-chat-TinyLlama-1.1B-Chat-v0.3-q4f32_0/resolve/main/",
-			"local_id": "TinyLlama-1.1B-Chat-v0.3-q4f32_0"
-		},
-		{
-			"model_url": "https://huggingface.co/onceuponai-dev/mlc-chat-TinyLlama-1.1B-Chat-v0.4-q4f32_0/resolve/main/",
-			"local_id": "TinyLlama-1.1B-Chat-v0.4-q4f32_0"
-		},
-		{
-			"model_url": "https://huggingface.co/onceuponai-dev/mlc-chat-TinyLlama-1.1B-Chat-v0.5-q4f32_0/resolve/main/",
-			"local_id": "TinyLlama-1.1B-Chat-v0.5-q4f32_0"
-		},
-		{
-			"model_url": "https://huggingface.co/onceuponai-dev/mlc-chat-TinyLlama-1.1B-Chat-v0.6-q4f32_0/resolve/main/",
-			"local_id": "TinyLlama-1.1B-Chat-v0.6-q4f32_0"
-		},
-		{
-			"model_url": "https://huggingface.co/onceuponai-dev/mlc-chat-Qra-1b-q4f32_0/resolve/main/",
-			"local_id": "Qra-1b-q4f32_0"
-		},
-		{
-			"model_url": "https://huggingface.co/onceuponai-dev/mlc-chat-Qra-7b-q4f32_0/resolve/main/",
-			"local_id": "Qra-7b-q4f32_0"
+			"model": "http://localhost:5173/stories-thumbellama//Bielik-11B-v2.3-Instruct-q4f32_1-MLC/",
+			"model_id": "Bielik-11B-v2.3-Instruct-q4f32_1",
+			"model_lib": "http://localhost:5173/stories-thumbellama/binary-mlc-llm-libs/Bielik-11B-v2.3-Instruct-q4f32_1-webgpu.wasm",
 		},
 	],
-	"model_lib_map": {
-		"TinyLlama-1.1B-Chat-v0.1-q4f32_0": "https://stories.onceuponai.dev/stories-thumbellama/binary-mlc-llm-libs/TinyLlama-1.1B-Chat-v0.1-q4f32_0-webgpu.wasm",
-		"TinyLlama-1.1B-Chat-v0.2-q4f32_0": "https://stories.onceuponai.dev/stories-thumbellama/binary-mlc-llm-libs/TinyLlama-1.1B-Chat-v0.2-q4f32_0-webgpu.wasm",
-		"TinyLlama-1.1B-Chat-v0.3-q4f32_0": "https://stories.onceuponai.dev/stories-thumbellama/binary-mlc-llm-libs/TinyLlama-1.1B-Chat-v0.3-q4f32_0-webgpu.wasm",
-		"TinyLlama-1.1B-Chat-v0.4-q4f32_0": "https://stories.onceuponai.dev/stories-thumbellama/binary-mlc-llm-libs/TinyLlama-1.1B-Chat-v0.4-q4f32_0-webgpu.wasm",
-		"TinyLlama-1.1B-Chat-v0.5-q4f32_0": "https://stories.onceuponai.dev/stories-thumbellama/binary-mlc-llm-libs/TinyLlama-1.1B-Chat-v0.5-q4f32_0-webgpu.wasm",
-		"TinyLlama-1.1B-Chat-v0.6-q4f32_0": "https://stories.onceuponai.dev/stories-thumbellama/binary-mlc-llm-libs/TinyLlama-1.1B-Chat-v0.6-q4f32_0-webgpu.wasm",
-		"Qra-1b-q4f32_0":                   "https://stories.onceuponai.dev/stories-thumbellama/binary-mlc-llm-libs/Qra-1b-q4f32_0-webgpu.wasm",
-        "Qra-7b-q4f32_0":                   "https://stories.onceuponai.dev/stories-thumbellama/binary-mlc-llm-libs/Qra-7b-q4f32_0-webgpu.wasm",
-	},
 	"use_web_worker": true
 }

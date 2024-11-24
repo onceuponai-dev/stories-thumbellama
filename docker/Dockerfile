@@ -10,12 +10,12 @@ RUN apt update && \
 
 RUN python3 -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
-RUN python3 -m pip install --pre -U -f https://mlc.ai/wheels mlc-chat-nightly-cu122 mlc-ai-nightly-cu122
+RUN python3 -m pip install --pre -U -f https://mlc.ai/wheels mlc-llm-nightly-cu122 mlc-ai-nightly-cu122
 
 RUN apt install gcc
 COPY --from=download /mlc-llm /opt/mlc-llm
 
-RUN cd /opt/mlc-llm && pip3 install .
+#RUN cd /opt/mlc-llm && pip3 install .
 
 RUN apt-get install git-lfs -yq
 
@@ -29,12 +29,18 @@ RUN cd /opt/emsdk/ && ./emsdk activate latest
 ENV TVM_HOME=/opt/mlc-llm/3rdparty/tvm
 
 RUN cd /opt/mlc-llm/3rdparty/tvm \
-  && git checkout 5828f1e9e \
   && git submodule init \
   && git submodule update --recursive \
   && make webclean \
   && make web
 
-RUN python3 -m pip install auto_gptq>=0.2.0 transformers
+RUN cd /opt/mlc-llm && ./web/prep_emcc_deps.sh
+ENV TVM_SOURCE_DIR=/opt/mlc-llm/3rdparty/tvm
+ENV MLC_LLM_SOURCE_DIR=/opt/mlc-llm
+
+ #&& git checkout 5828f1e9e \
+
+#RUN python3 -m pip install auto_gptq>=0.2.0 transformers
+
 
 CMD /bin/bash

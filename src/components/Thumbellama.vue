@@ -24,9 +24,12 @@ export default defineComponent({
     const assistantEnabled = ref(false);
     const assistant = new Assistant()
     const assistantConversation: any = ref([]);
-    const assistantModel: any = ref("TinyLlama-1.1B-Chat-v0.6-q4f32_0");
+    const assistantModel: any = ref("Bielik-11B-v2.3-Instruct-q4f32_1");
 
     const assistantChange = async () => {
+      console.log("DUPA1");
+      await assistant.init();
+      console.log("DUPA2");
       await assistant.reload(assistantModel.value);
       assistantEnabled.value = true;
       assistantDialog.value = false;
@@ -36,8 +39,7 @@ export default defineComponent({
       assistantDialog.value = true;
     }
 
-    onMounted(() => {
-
+    onMounted(async () => {
     });
 
     onUpdated(() => {
