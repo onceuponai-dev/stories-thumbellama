@@ -111,3 +111,25 @@ I have shared several converted models on [HuggingFace](https://huggingface.co/o
 
 Read more on:
 [https://blog.qooba.net/2023/12/13/tinyllama-compact-llm-with-webassembly/](https://blog.qooba.net/2023/12/13/tinyllama-compact-llm-with-webassembly/)
+
+
+
+For bielik
+```
+git clone https://huggingface.co/speakleash/Bielik-11B-v2.3-Instruct
+cd ../..
+
+
+mlc_llm convert_weight ./dist/models/Bielik-11B-v2.3-Instruct --quantization q4f32_1 \
+    -o dist/Bielik-11B-v2.3-Instruct-q4f32_1-MLC
+    
+mkdir dist/libs
+
+mlc_llm gen_config ./dist/models/Bielik-11B-v2.3-Instruct/ --quantization q4f32_1 \
+    --prefill-chunk-size 1024 --conv-template mistral_default \
+    -o dist/Bielik-11B-v2.3-Instruct-q4f32_1-MLC/
+    
+    
+mlc_llm compile ./dist/Bielik-11B-v2.3-Instruct-q4f32_1-MLC/mlc-chat-config.json \
+    --device webgpu -o dist/libs/Bielik-11B-v2.3-Instruct-q4f32_1-webgpu.wasm
+```
